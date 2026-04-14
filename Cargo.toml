@@ -1,0 +1,34 @@
+[package]
+name          = "embassy-hcsr505"
+version       = "0.1.0"
+edition       = "2024"
+authors       = ["Jorge Andre Castro <georgeandrec@gmail.com>"]
+license       = "GPL-2.0-or-later"
+description   = "Driver async no_std minimaliste pour le capteur PIR HC-SR505 via Embassy."
+repository    = "https://github.com/votre-github/embassy-hcsr505"
+documentation = "https://docs.rs/embassy-hcsr505"
+readme        = "README.md"
+keywords      = ["embassy", "hcsr505", "pir", "motion", "no-std"]
+categories    = ["embedded", "no-std", "hardware-support"]
+
+build        = false
+autolib      = false
+autobins     = false
+autoexamples = false
+autotests    = false
+autobenches  = false
+
+[lib]
+name = "embassy_hcsr505"
+path = "src/lib.rs"
+
+[dependencies]
+embassy-time = { version = "0.4.0" }
+embassy-sync = { version = "0.6.0" }
+
+[profile.release]
+opt-level     = "z"
+lto           = true
+codegen-units = 1
+panic         = "abort"
+strip         = true
