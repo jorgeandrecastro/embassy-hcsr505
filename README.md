@@ -14,12 +14,30 @@ Empreinte minimale : Conçu pour les microcontrôleurs à ressources limitées (
 
 ----
 
+# 🔄 Fixed
+
+**Version actuelle conseillée : v0.2.0**
+
+Dépendances désormais fixées pour une meilleure stabilité
+Amélioration notable par rapport à la version v0.1.2, notamment sur l’écosystème Embassy (embassy-time, embassy-sync)
+Suppression des plages de versions larges afin d’éviter le dependency hell
+
+````
+[dependencies]
+embassy-time  = "0.5"
+embassy-sync  = "0.8" 
+embedded-hal-async = "1.0"
+````
+
+----
+
+
 **Installation**
 Ajoutez ceci à votre fichier Cargo.toml :
 
 ````
 [dependencies]
-embassy-hcsr505 = { version = "0.1.2" }
+embassy-hcsr505 = { version = "0.2.0" }
 ````
 Utilisation
 Le driver a été conçu pour être simple : vous lui donnez une pin configurée en entrée, et il gère le reste.
@@ -109,9 +127,9 @@ async fn alert_task() {
         let motion_detected = MOTION_SIGNAL.wait().await;
 
         if motion_detected {
-            defmt::println!("🚨 Mouvement détecté !");
+            defmt::println!(" Mouvement détecté !");
         } else {
-            defmt::println!("✓ Zone sécurisée");
+            defmt::println!(" Zone sécurisée");
         }
     }
 }
